@@ -12,3 +12,17 @@ footer {
         color: $text-color;
     }
 }
+.social-icon {
+    #{&}__link {
+        background: $text-color;
+        border-radius: 100%;
+        color: $primary-color;
+        line-height: 30px;
+        display: inline-block;
+        margin: 10px 5px;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        text-decoration: none;
+    }
+}

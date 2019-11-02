@@ -1,14 +1,15 @@
 
 .home-body {
-    background: linear-gradient(
-        to left,
-        rgba($secondary-color, 0.5),
-        rgba($secondary-color, 0.2),
-    ),
-    url('/dist/img/model-1.jpg') center top no-repeat;
-    background-size: cover;
+    // background: linear-gradient(
+    //     to left,
+    //     rgba($secondary-color, 0.5),
+    //     rgba($secondary-color, 0.2),
+    // ),
+    // url('/dist/img/model-1.jpg') center top no-repeat;
+    // background-size: cover;
 }
-.home-ceontent {
+
+.home-content {
     @include flexCenter(column);
     height: 100%;
     #{&}__about-me {

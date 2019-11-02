@@ -6,7 +6,7 @@
 @import 'layout/header';
 @import 'layout/footer';
 @import 'pages/home';
-@import 'component/inner-avatar-banner';
+@import 'pages/about-me';
 
 body {
     color: set-text-color($accent-color);
@@ -19,6 +19,13 @@ a {
 .body-wrapper {
     padding-left: 300px;
     height: 100vh;
+    background: linear-gradient(
+        to left,
+        rgba($secondary-color, 0.5),
+        rgba($secondary-color, 0.2),
+    ),
+    url('/dist/img/model-1.jpg') center top no-repeat;
+    background-size: cover;
     @include transition(0.3s);
     @include media-lg {
         padding-left: 0;
@@ -31,6 +38,13 @@ a {
     position: relative;
     height: 100%;
     padding: 50px 30px;
+    // background: url('/dist/img/model-1.jpg') center top no-repeat;
+    // background-size: cover;
+}
+.inner-content {
+    height: 100%;
+    background: rgba($text-color, 0.4);
+    overflow: auto;
 }
 .main { 
     // background: $text-color;
