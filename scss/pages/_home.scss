@@ -1,0 +1,34 @@
+
+.home-body {
+    background: linear-gradient(
+        to left,
+        rgba($secondary-color, 0.5),
+        rgba($secondary-color, 0.2),
+    ),
+    url('/dist/img/model-1.jpg') center top no-repeat;
+    background-size: cover;
+}
+.home-ceontent {
+    @include flexCenter(column);
+    height: 100%;
+    #{&}__about-me {
+        h3 {
+            color: set-text-color($text-color);
+            font-size: 70px;
+            @include media-md {
+                font-size: 9vw;
+            }
+        }
+        p {
+            font-size: 34px;
+            color: set-text-color($text-color);
+            @include media-md {
+                font-size: 5vw;
+            }
+            span {
+                // display: block;
+                font-weight: weight(bold);
+            }
+        }
+    }
+}

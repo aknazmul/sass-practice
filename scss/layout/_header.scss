@@ -1,0 +1,129 @@
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 30px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;   
+    z-index: 99;
+}
+.menu-btn {
+    position: relative;
+    z-index: 999;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    #{&}__burger {
+        height: 2px;
+        width: 25px;
+        background: set-text-color($text-color);
+        display: inline-block;
+        position: relative;
+        @include transition(0.3s);
+        &.open {
+            @include media-lg {
+                background: transparent;
+                transform: rotate(360deg);
+                &::before {
+                    width: 30px!important;
+                    transform: rotate(45deg) translate(5px, 8px);
+                }
+                &::after {
+                    width: 30px!important;
+                    transform: rotate(-45deg) translate(3px, -7px);
+                }
+            }
+        }
+        &::before {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: 0;
+            height: 2px;
+            width: 30px;
+            background: set-text-color($text-color);
+            display: inline-block;
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 0;
+            height: 2px;
+            width: 20px;
+            background: set-text-color($text-color);
+            display: inline-block;
+        }
+    }
+}
+
+.nav {
+    background: linear-gradient(
+        to right,
+        rgba($secondary-color, 0.4),
+        rgba($secondary-color, 0),
+    );
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 300px;
+    padding: 0;
+    height: 100%;
+    overflow: auto;
+    @include media-lg {
+        background: linear-gradient(
+        to right,
+            rgba($secondary-color, 0.9),
+            rgba($secondary-color, 0.8),
+        );
+        visibility: hidden;
+        transform: translateY(-100%);
+        width: 225px;
+        @include transition(0.3s);
+        &.open {
+            visibility: visible;
+            transform: translateY(0%);
+        } 
+    }
+}
+.menu-nav {
+    padding: 50px 0 0 0;
+    @include media-lg {
+        padding-top: 15px;
+    }
+    #{&}__item {
+        list-style-type: none;
+    }
+    #{&}__link {
+        color: set-text-color($text-color);
+        display: block;
+        min-height: 50px;
+        padding: 10px 30px;
+        text-decoration: none;
+        font-size: 20px;
+        @include transition(0.3s);
+        &:hover {
+            color: $primary-color;
+        }
+        &.active {
+            color: $primary-color;
+        }
+    }
+    &:hover {
+        .menu-nav__item {
+            @include opacity(0.4);
+            &:hover {
+                @include opacity(1)
+            }
+        }
+        .menu-nav__link {
+            &:hover {
+                color: $primary-color;
+            }
+        }
+    }
+}

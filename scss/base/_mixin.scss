@@ -1,0 +1,43 @@
+@mixin transition($value) {
+    -webkit-transition: $value ease-in-out;
+    -moz-transition: $value ease-in-out;
+    -ms-transition: $value ease-in-out;
+    -o-transition: $value ease-in-out;
+    transition: $value ease-in-out;
+}
+
+@mixin flexCenter ($direction) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+
+@mixin opacity($opacity) {
+    opacity: $opacity;
+    $opacity-ie: $opacity * 100;
+    filter: alpha(opacity=$opacity-ie); //IE8
+  }
+
+@mixin theme($light-theme: true) {
+    @if $light-theme {
+        background: lighten($primary-color, 100%);
+        color: darken($text-color, 100%);
+    }
+}
+
+@mixin media-md {
+    @media screen and (max-width: 768px) {
+        @content;
+    }
+}
+@mixin media-lg {
+    @media screen and (max-width: 1024px) {
+        @content;
+    }
+}
+@mixin media-xl {
+    @media screen and (min-width: 1300px) {
+        @content;
+    }
+}
