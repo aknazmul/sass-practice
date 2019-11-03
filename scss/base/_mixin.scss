@@ -1,9 +1,9 @@
 @mixin transition($value) {
-    -webkit-transition: $value ease-in-out;
-    -moz-transition: $value ease-in-out;
-    -ms-transition: $value ease-in-out;
-    -o-transition: $value ease-in-out;
-    transition: $value ease-in-out;
+    -webkit-transition: all $value ease-in-out;
+    -moz-transition: all $value ease-in-out;
+    -ms-transition: all $value ease-in-out;
+    -o-transition: all $value ease-in-out;
+    transition: all $value ease-in-out;
 }
 
 @mixin flexCenter ($direction) {
@@ -17,7 +17,19 @@
     opacity: $opacity;
     $opacity-ie: $opacity * 100;
     filter: alpha(opacity=$opacity-ie); //IE8
-  }
+}
+
+@mixin  box-shadow($top, $left, $blur, $color, $inset: false) {
+    @if $inset {
+        -webkit-box-shadow:inset $top $left $blur $color;
+        -moz-box-shadow:inset $top $left $blur $color;
+        box-shadow:inset $top $left $blur $color;
+    } @else {
+        -webkit-box-shadow: $top $left $blur $color;
+        -moz-box-shadow: $top $left $blur $color;
+        box-shadow: $top $left $blur $color;
+    }
+}
 
 @mixin theme($light-theme: true) {
     @if $light-theme {
@@ -26,6 +38,55 @@
     }
 }
 
+@mixin button($btn_color, $btn_text_color) {
+    display: inline-block;
+    outline: none;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    font: 14px/100% Arial, Helvetica, sans-serif;
+    padding: 1em 1.55em;
+    text-shadow: 0 1px 1px rgba(0,0,0,.3);
+    @include rounded(50px);
+    @include box-shadow(0, 5px, 10px, rgba(0, 0, 0, 0.2));
+  
+    color: $btn_text_color !important;
+    font-weight: bold;
+    border: solid 1px darken($btn_color, 18%);
+    background: $btn_color;
+    @include gradient(saturate($btn_color, 15%), darken($btn_color, 15%));
+  
+    &:hover {
+      text-decoration: none;
+      background: saturate($btn_color, 10%);
+      @include gradient(saturate($btn_color, 5%), darken($btn_color, 5%));
+    }
+  
+    &:active {
+      position: relative;
+      top: 1px;
+      color: saturate($btn_color, 15%);
+      @include gradient(saturate($btn_color, 15%), lighten($btn_color, 15%));
+    }
+  }
+
+  @mixin rounded($value) {
+    -webkit-border-radius: $value; 
+    -moz-border-radius: $value;
+    border-radius: $value;
+  }
+  
+  @mixin gradient($from, $to) {
+    background: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
+    background: -moz-linear-gradient(top,  $from, $to);
+    filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#{$from}', endColorstr='#{$to}');
+  }
+
+@mixin media-sm {
+    @media screen and (max-width: 500px) {
+        @content;
+    }
+}
 @mixin media-md {
     @media screen and (max-width: 768px) {
         @content;

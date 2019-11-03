@@ -6,20 +6,27 @@ footer {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    padding: 12px 30px;
+    @include media-md {
+        background: rgba( $text-color, 0.3);
+        padding: 12px 16px;
+    }
     p {
         margin: 0;
-        padding: 15px 30px;
+        padding: 0;
         color: $text-color;
     }
 }
 .social-icon {
+    margin: 0 -5px;
+    padding: 0 0 0 25px;    
     #{&}__link {
         background: $text-color;
         border-radius: 100%;
         color: $primary-color;
         line-height: 30px;
         display: inline-block;
-        margin: 10px 5px;
+        margin: 0 5px;
         width: 30px;
         height: 30px;
         text-align: center;

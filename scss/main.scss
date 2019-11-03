@@ -3,13 +3,15 @@
 @import 'base/utilities';
 @import 'base/function';
 @import 'base/mixin';
+@import 'component/buttons';
 @import 'layout/header';
 @import 'layout/footer';
 @import 'pages/home';
+@import 'pages/projects';
 @import 'pages/about-me';
 
 body {
-    color: set-text-color($accent-color);
+    color: set-text-color($text-color);
     height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -29,41 +31,103 @@ a {
     @include transition(0.3s);
     @include media-lg {
         padding-left: 0;
-        &.open {
-            padding-left: 300px;
+    }
+    @include media-md {
+        background: linear-gradient(
+        to left,
+        rgba($secondary-color, 0.8),
+        rgba($secondary-color, 0.8),
+    ),
+    url('/dist/img/model-1.jpg') center top no-repeat;
+    background-size: cover;
+    }
+    &.open {
+        opacity: 0.4;
+        .inner-content {
+            overflow: hidden;
         }
     }
 }
 .body-content {
     position: relative;
     height: 100%;
-    padding: 50px 30px;
-    // background: url('/dist/img/model-1.jpg') center top no-repeat;
-    // background-size: cover;
+    padding: 55px 30px;
+    @include media-md {
+        padding: 55px 0;
+    }
+}
+.page-title {
+    font-size: 25px;
+    color: $primary-color;
+    top: 10px;
+    left: 0;
+    position: absolute;
+    // z-index: 999;
+    padding-left: 30px;
+    @include media-md {
+        padding-left: 15px;
+    }
+}
+.inner-content-wrap {
+    padding: 15px 10px;
+    @include media-md {
+        padding: 0;
+    }
+}
+.app-container {
+    padding: 0 16px;
+}
+.portfolio-grid {
+    display: flex;
+    flex-flow: wrap;
+    margin: 0 -16px;
+    @include media-sm {
+        flex-direction: column;
+    }
+    .grid-col {
+        flex: 0 0 (100% / 3);
+        width: (100% / 3);
+        padding: 0 16px;
+        @include media-md {
+            flex: 0 0 (100% / 2);
+            width: (100% / 2);
+        }
+        @include media-sm {
+            flex: 0 0 (100% / 1);
+            width: (100% / 1);
+        }
+    }
 }
 .inner-content {
     height: 100%;
-    background: rgba($text-color, 0.4);
+    background: rgba($secondary-color, 0.2);
+    border-top: 15px solid rgba($secondary-color, 0.015);
+    border-bottom: 15px solid rgba($secondary-color, 0.015);
     overflow: auto;
+    /* width */
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+    
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: rgb(104, 104, 104);
+    }
+    
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+    @include media-md {
+        background: transparent;
+    }
 }
-.main { 
-    // background: $text-color;
-    // color: set-text-color($text-color);
-    // @include flexCenter(row);
-    // width: calc(80% - 20%);
-    // margin: 0 auto;
-    // padding: 20px;
-    // #{&}__paragraph {
-    //     padding: 15px;
-    //     font-weight: weight(bold);
-    //     &:hover{
-    //         color: pink;
-    //     }
-    // }
-    // @include mobile {
-    //     flex-direction: column;
-    // }
-}
+
 .light {
-    // @include theme($light-theme: false);
+    @include theme($light-theme: false);
 }

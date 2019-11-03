@@ -1,0 +1,9 @@
+.primary-button {
+    @include button($primary-color, $text-color);
+}
+.secondary-button {
+    @include button($secondary-color, $text-color);
+}
+.accent-button {
+    @include button($accent-color, $text-color);
+}

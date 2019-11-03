@@ -1,0 +1,26 @@
+
+.portfolio-item {
+    background: #ffffff;
+    margin-bottom: 16px;
+    #{&}__image {
+        img {
+            width: 100%;
+            max-height: 180px;
+            min-height: 180px;
+            display: block;
+        }
+    }
+    #{&}__content {
+        padding: 15px;
+        h3 {
+            a {
+                color: $secondary-color;
+                text-decoration: none;
+                color: $primary-color;
+            }
+        }
+        p {
+            color: $secondary-color;
+        }
+    }
+}
